@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Certificate Generator</h1>
+        <form id="certificate-form">
+            <label for="recipient-name">Recipient Name:</label>
+            <input type="text" id="recipient-name" name="recipient-name" required>
+            
+            
+            <label for="certificate-type">Select Certificate Type:</label>
+            <select id="certificate-type" name="certificate-type" required>
+                <option value="">Select Certificate Type</option>
+                <option value="participation">Participation</option>
+                <option value="academic">Academic Excellence</option>
+                <option value="medical">Medical</option>
+                <option value="sports">Sports</option>
+            </select>
+            <button type="button" onclick="generateCertificate()">Generate Certificate</button>
+        </form>
+    </div>
+
+    <script>
+        function generateCertificate() {
+            // Get user input values
+            const recipientName = document.getElementById('recipient-name').value;
+           
+            const certificateType = document.getElementById('certificate-type').value;
+
+            // Redirect to the specific website based on the selected certificate type
+            let redirectUrl;
+            switch (certificateType) {
+                case 'participation':
+                    redirectUrl = `http://127.0.0.1:5500/participation.html?name=${encodeURIComponent(recipientName)}`;
+                
+                    break;
+                case 'academic':
+                    redirectUrl = `http://127.0.0.1:5500/academicexcellence.html?name=${encodeURIComponent(recipientName)}`;
+                    break;
+                case 'medical':
+                    redirectUrl = `http://127.0.0.1:5500/medicalcertificate.html?name=${encodeURIComponent(recipientName)}`;
+                    break;
+                case 'sports':
+                    redirectUrl = `http://127.0.0.1:5500/sportsachievements.html?name=${encodeURIComponent(recipientName)}`;
+                    break;
+                default:
+                    alert('Please select a certificate type.');
+                    return;
+            }
+            window.location.href = redirectUrl;
+        }   
+        function downloadCertificate(){
+            const container=document.querySelector('.container');
+            const clonedContainer=container.cloneNode(true);
+            clonedContainer.querySelector('button').remove();
+
+            html12pdf(clonedContainer);
+        }
+        
+        
+    </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participation Certificate</title>
+    <style>
+       
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+    }
+
+    .certificate {
+        width: 800px;
+        height: 500px;
+        margin: 50px auto;
+        background-color: #ffffff;
+        border: 10px solid #100107;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .certificate::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("background_image.jpg"); /* Replace with your image */
+        background-size: cover;
+        opacity: 0.2;
+        z-index: -1;
+        border-radius: 20px;
+    }
+
+    .header {
+        text-align: center;
+        padding-top: 50px;
+    }
+
+    .title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #2a011f;
+    }
+
+    .subtitle {
+        font-size: 24px;
+        font-style: italic;
+        color: #12010d;
+    }
+
+    .content {
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .content p {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .signature {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        text-align: center;
+    }
+
+    .signature img {
+        width: 100px; /* Adjust as needed */
+        
+    
+    }
+
+    .signature-text {
+        font-size: 10px;
+        margin-top: 10px;
+    }
+</style>
+    
+<body>
+    <div class="certificate">
+        <div class="header">
+            <div class="title">Medical Certificate</div>
+            
+        </div>
+        e
+        <div class="content">
+            <p>This is to certify that <strong id="recipient-name">[name]</strong> has been examined and found to be in good health..</p>
+            
+        </div>
+        
+        <div class="signature">
+            <img src="gmct.jpg" alt="Signature">
+            <div class="signature-text">[GOVT.MEDICAL COLLEGE THRISSUR]</div>
+            
+        </div>
+    </div>
+    <button onclick="download">Download pdf</button>
+
+    <script>
+        // Get the recipient name from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipientName = urlParams.get('name');
+
+        // Update the recipient name in the certificate
+        const recipientNameElement = document.getElementById('recipient-name');
+        if (recipientNameElement) {
+            recipientNameElement.textContent = recipientName;
+        }
+    </script>
+</body>
+</html>

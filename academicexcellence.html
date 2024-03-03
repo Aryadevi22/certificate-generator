@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participation Certificate</title>
+    <style>
+       
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .certificate {
+        width: 800px;
+        height: 500px;
+        margin: 50px auto;
+        background-color: #ffffffeb;
+        border: 10px solid #f400b3;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .certificate::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("background_image.jpg"); /* Replace with your image */
+        background-size: cover;
+        opacity: 0.2;
+        z-index: -1;
+        border-radius: 20px;
+    }
+
+    .header {
+        text-align: center;
+        padding-top: 50px;
+    }
+
+    .title {
+        font-size: 36px;
+        font-weight: bold;
+        color: #bf028c;
+    }
+
+    .subtitle {
+        font-size: 24px;
+        font-style: italic;
+        color: #8a0a66;
+    }
+
+    .content {
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .content p {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    .signature {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        text-align: center;
+    }
+
+    .signature img {
+        width: 100px; /* Adjust as needed */
+        
+    }
+
+    .signature-text {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+</style>
+    
+<body>
+    <div class="certificate">
+        <div class="header">
+            <div class="title">Academic Excellence</div>
+            
+        </div>
+        e
+        <div class="content">
+            <p>This is to certify that <strong id="recipient-name">[name]</strong> has performed exceptionally in the Academic year 2023-2024.</p>
+            <p>Their active involvement and contribution are greatly appreciated.</p>
+        </div>
+        
+        <div class="signature">
+            <img src="gectemblem.jpg" alt="Signature">
+            <div class="signature-text">[GEC Thrissur]</div>
+            
+        </div>
+    </div>
+    <button onclick="download()">Download pdf</button>
+
+    <script>
+        // Get the recipient name from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipientName = urlParams.get('name');
+
+        // Update the recipient name in the certificate
+        const recipientNameElement = document.getElementById('recipient-name');
+        if (recipientNameElement) {
+            recipientNameElement.textContent = recipientName;
+        }
+
+
+        function download(){
+            const container=document.querySelector('.container');
+            const clonedContainer=container.cloneNode(true);
+            clonedContainer.querySelector('button').remove();
+
+            html12pdf(clonedContainer);
+        }
+    </script>
+</body>
+</html>
